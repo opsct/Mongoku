@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:10-slim
 
 ENV UID=991 GID=991
 
@@ -12,7 +12,8 @@ WORKDIR /app
 
 COPY ./ /app
 
-RUN npm install -g typescript @angular/cli \
+# npm package versions should be consistent with ./app/package.json
+RUN npm install -g typescript@3.2.4 @angular/cli@7.2.4 \
       && npm install \
       && cd app \
       && npm install \
