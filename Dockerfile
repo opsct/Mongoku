@@ -1,5 +1,9 @@
 FROM node:10-slim
 
+# update packages
+RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && \
+	rm -rf /var/lib/apt/lists/*
+
 ENV UID=991 GID=991
 
 ENV MONGOKU_DEFAULT_HOST="localhost:27017"
